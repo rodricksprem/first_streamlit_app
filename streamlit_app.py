@@ -25,4 +25,4 @@ fruityvice_response = requests.get(
     "https://fruityvice.com/api/fruit/"+fruit_choice)
 fruityvice_response_jsonnormalized = pandas.json_normalize(
     fruityvice_response.json())
-streamlit.text(fruityvice_response_jsonnormalized)
+streamlit.dataframe(fruityvice_response_jsonnormalized)
