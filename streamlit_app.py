@@ -1,8 +1,9 @@
-from msilib.schema import Error
+
 import streamlit
 import pandas
 import requests
 import snowflake.connector
+from urllib.error import URLError
 
 streamlit.title("My Parents New Healthy Dinner")
 streamlit.header("Breakfast Menu")
@@ -35,7 +36,7 @@ try:
             fruityvice_response.json())
         streamlit.dataframe(fruityvice_response_jsonnormalized)
         #streamlit.write('The user entered ', fruit_choice)
-except Error as e:
+except URLError as e:
     streamlit.error()
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
